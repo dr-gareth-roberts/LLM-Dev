@@ -1,0 +1,20 @@
+storage:
+  persist_dir: ./storage
+  index_store: ./storage/index_store
+  doc_store: ./storage/doc_store
+  vector_store: ./storage/vector_store
+
+indexing:
+  chunk_size: 1024
+  chunk_overlap: 20
+  embedding_model: text-embedding-ada-002
+
+retrieval:
+  similarity_top_k: 4
+  response_mode: compact
+  node_postprocessors:
+    - type: KeywordNodePostprocessor
+    - type: SimilarityPostprocessor
+
+structured_store:
+  sql_database_path: ./storage/structured_store.db

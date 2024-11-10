@@ -1,0 +1,29 @@
+components:
+  - name: DocumentStore
+    type: ElasticsearchDocumentStore
+    params:
+      host: localhost
+      port: 9200
+      similarity: cosine
+      index: documents
+
+  - name: Retriever
+    type: EmbeddingRetriever
+    params:
+      document_store: DocumentStore
+      embedding_model: sentence-transformers/all-mpnet-base-v2
+      top_k: 10
+
+  - name: Reader
+    type: FARMReader
+    params:
+      model_name_or_path: deepset/roberta-base-squad2
+      top_k: 5
+
+pipelines:
+  - name: query
+    nodes:
+      - name: Retriever
+        inputs: [Query]
+      - name: Reader
+        inputs: [Retriever]
