@@ -1,3 +1,6 @@
+from sympy import categories
+
+
 def generate_expert_classification_prompt(text, categories):
     prompt = f"""
     You are a world-class expert in content analysis and classification. Your task is to classify the given text into one of the following categories with unwavering accuracy: {', '.join(categories)}.
@@ -62,8 +65,8 @@ def simulate_expert_model_response(prompt):
     # Simulating an expert-level, highly confident model response
     return "Simulated expert model response based on the advanced prompt"
     
-    ''''
+''''
     USAGE
     response = run_expert_test_case("'The Algorithmist,' a new film by acclaimed director Ava Neural, is breaking box office records. The movie follows a sentient AI navigating ethical dilemmas in a world where humans have become fully digital entities. Critics praise its exploration of free will, consciousness, and the nature of reality, while tech giants debate its scientific accuracy. Philosophy departments are hosting screenings, and Silicon Valley is buzzing with talks of life imitating art.")
-    
+'''
     

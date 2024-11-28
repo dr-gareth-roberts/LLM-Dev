@@ -1,13 +1,12 @@
 """
 Advanced Agent System for Automated LLM Tasks
 """
-from typing import List, Dict, Any, Optional
-import asyncio
-from dataclasses import dataclass
 from enum import Enum
+from typing import List, Dict, Any, Optional
+
 import networkx as nx
 from pydantic import BaseModel
-import json
+
 
 class AgentRole(Enum):
     RESEARCHER = "researcher"

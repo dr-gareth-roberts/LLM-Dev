@@ -82,7 +82,7 @@ def simulate_expert_summarization_response(prompt):
     return "Simulated expert text summarization response based on the advanced prompt"
     
 # Example Use 
-''''
+'''
 test_text = """
 The intersection of artificial intelligence and healthcare has been a topic of intense interest and debate in recent years. 
 Proponents argue that AI has the potential to revolutionize medical diagnosis, treatment planning, and drug discovery. 
@@ -103,4 +103,4 @@ As we move forward, it will be crucial to foster collaboration between AI resear
 
 desired_length = 150
 response = run_expert_summarization(test_text, desired_length)
-#
+'''

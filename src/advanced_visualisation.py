@@ -1,20 +1,16 @@
 """
 advanced_visualization.py - Advanced Visualization and Reporting System
 """
-import plotly.graph_objects as go
-import plotly.express as px
-import plotly.figure_factory as ff
-from plotly.subplots import make_subplots
-import networkx as nx
-import pandas as pd
-import numpy as np
+from datetime import datetime
 from typing import List, Dict, Any, Optional
-from pathlib import Path
+
 import dash
+import numpy as np
+import pandas as pd
+import plotly.graph_objects as go
 from dash import dcc, html
 from dash.dependencies import Input, Output
-import dash_cytoscape as cyto
-from datetime import datetime, timedelta
+
 
 class AdvancedVisualizer:
     def __init__(self, env: 'LLMDevEnvironment'):

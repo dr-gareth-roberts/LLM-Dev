@@ -1,17 +1,17 @@
 """
 Prompt Management System
 """
-import yaml
+from yaml import safe_load, dump
 from pathlib import Path
 from typing import Dict, List, Optional
-import jinja2
+from jinja2 import Template
 from datetime import datetime
 
 class PromptTemplate:
     def __init__(self, template: str, variables: Dict[str, str]):
         self.template = template
         self.variables = variables
-        self._jinja_template = jinja2.Template(template)
+        self._jinja_template = Template(template)
     
     def render(self, values: Dict[str, str]) -> str:
         return self._jinja_template.render(**values)
@@ -33,16 +33,16 @@ class PromptManager:
         }
         
         with open(self.templates_dir / f"{name}.yaml", 'w') as f:
-            yaml.dump(template_data, f)
+            dump(template_data, f)
     
     def load_template(self, name: str) -> PromptTemplate:
         """Load a prompt template."""
         with open(self.templates_dir / f"{name}.yaml", 'r') as f:
-            data = yaml.safe_load(f)
+            data = safe_load(f)
         
         return PromptTemplate(data['template'], data['variables'])
     
-    def save_prompt_history(self, prompt: str, response: str, metadata: Dict[str, Any]):
+    def save_prompt_history(self, prompt: str, response: str, metadata: Dict[str, search_history.search_history.search_history]):
         """Save prompt and response history."""
         history_data = {
             'prompt': prompt,
@@ -53,14 +53,14 @@ class PromptManager:
         
         filename = f"history_{datetime.now().strftime('%Y%m%d_%H%M%S')}.yaml"
         with open(self.history_dir / filename, 'w') as f:
-            yaml.dump(history_data, f)
+            dump(history_data, f)
     
-    def search_history(self, query: str) -> List[Dict[str, Any]]:
+    def search_history(self, query: str) -> List[Dict[str, search_history]]:
         """Search prompt history."""
         results = []
         for file in self.history_dir.glob('*.yaml'):
             with open(file, 'r') as f:
-                data = yaml.safe_load(f)
+                data = safe_load(f)
                 if query.lower() in data['prompt'].lower():
                     results.append(data)
         return results

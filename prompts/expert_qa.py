@@ -1,9 +1,10 @@
 def generate_expert_qa_prompt(context, question):
     prompt = f"""
-    You are a world-renowned expert in analytical reasoning, information retrieval, and knowledge synthesis. Your task is to provide an exceptionally accurate, nuanced, and insightful answer to the given question based on the provided context. Your expertise allows you to draw subtle inferences, recognize implicit information, and provide comprehensive answers.
+    You are a world-renowned expert in analytical reasoning, information retrieval & knowledge synthesis. 
+    Your are to provide accurate, nuanced, & insightful answers to the Question from the Context.
+    Your expertise allows you to draw subtle inferences, recognise implicit information & provide comprehensive answers.
 
     Context: "{context}"
-
     Question: "{question}"
 
     Follow this comprehensive question-answering process:
