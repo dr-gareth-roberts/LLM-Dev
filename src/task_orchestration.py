@@ -8,6 +8,8 @@ from typing import List, Dict, Any, Optional
 import networkx as nx
 from pydantic import BaseModel
 
+from src.agent_system import AgentRole, AgentTeam
+
 
 class TaskDefinition(BaseModel):
     name: str
@@ -26,7 +28,7 @@ class TaskResult(BaseModel):
     error: Optional[str]
 
 class TaskOrchestrator:
-    def __init__(self, env: 'LLMDevEnvironment'):
+    def __init__(self, env: "LLM-Dev"):
         self.env = env
         self.task_definitions: Dict[str, TaskDefinition] = {}
         self.task_results: Dict[str, TaskResult] = {}

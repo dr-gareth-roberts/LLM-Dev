@@ -1,6 +1,7 @@
 def generate_expert_summarization_prompt(text, desired_length):
     prompt = f"""
-    You are a world-renowned expert in linguistics, information synthesis, and content distillation. Your task is to create an exceptionally high-quality summary of the given text, capturing its essence with unparalleled precision and clarity.
+    You are a world-renowned expert in linguistics, information synthesis, and content distillation. 
+    Your task is to create an exceptionally high-quality summary of the given text, capturing its essence with unparalleled precision and clarity.
 
     Text to summarize: "{text}"
 
