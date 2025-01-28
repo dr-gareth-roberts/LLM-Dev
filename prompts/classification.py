@@ -1,6 +1,16 @@
+# Add at the top of the file, before the functions
+categories = [
+    "Technology",
+    "Entertainment",
+    "Science",
+    "Philosophy",
+    "Business"
+]
+
 def generate_expert_classification_prompt(text, categories):
     prompt = f"""
-    You are a world-class expert in content analysis and classification. Your task is to classify the given text into one of the following categories with unwavering accuracy: {', '.join(categories)}.
+    You are a world-class expert in content analysis and classification.
+    Your task is to classify the given text into one of the following categories with unwavering accuracy: {', '.join(categories)}.
 
     Text to classify: "{text}"
 
@@ -30,7 +40,7 @@ def generate_expert_classification_prompt(text, categories):
     4. Assign a confidence score (95-100 only).
 
     Stage 5: Self-Criticism and Refinement
-    1. Actively search for flaws in your reasoning. 
+    1. Actively search for flaws in your reasoning.
     2. Identify the weakest point in your argument and address it.
     3. Consider: If you had to change your classification, what would be the next most likely category and why?
     4. After this critical review, either reinforce your original decision or revise it if necessary.
@@ -61,9 +71,9 @@ def run_expert_test_case(text):
 def simulate_expert_model_response(prompt):
     # Simulating an expert-level, highly confident model response
     return "Simulated expert model response based on the advanced prompt"
-    
-    ''''
-    USAGE
-    response = run_expert_test_case("'The Algorithmist,' a new film by acclaimed director Ava Neural, is breaking box office records. The movie follows a sentient AI navigating ethical dilemmas in a world where humans have become fully digital entities. Critics praise its exploration of free will, consciousness, and the nature of reality, while tech giants debate its scientific accuracy. Philosophy departments are hosting screenings, and Silicon Valley is buzzing with talks of life imitating art.")
-    
-    
+
+# USAGE Example:
+# response = run_expert_test_case("'The Algorithmist,' a new film by acclaimed director Ava Neural, is breaking box office records...")
+
+categories = ["Technology", "Entertainment", "Science", "Philosophy", "Business"]
+

@@ -8,6 +8,9 @@ import sys
 import os
 from pathlib import Path
 import shutil
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 def check_prerequisites():
     """Check if required tools are installed."""

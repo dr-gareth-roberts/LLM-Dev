@@ -80,24 +80,23 @@ def run_expert_summarization(text, desired_length):
 def simulate_expert_summarization_response(prompt):
     # Simulating an expert-level, highly confident model response for text summarization
     return "Simulated expert text summarization response based on the advanced prompt"
-    
-# Example Use 
-''''
+
+# Example Use
 test_text = """
-The intersection of artificial intelligence and healthcare has been a topic of intense interest and debate in recent years. 
-Proponents argue that AI has the potential to revolutionize medical diagnosis, treatment planning, and drug discovery. 
-Machine learning algorithms, when trained on vast datasets of medical images and patient records, have shown promising results in detecting diseases at early stages, often outperforming human radiologists. 
+The intersection of artificial intelligence and healthcare has been a topic of intense interest and debate in recent years.
+Proponents argue that AI has the potential to revolutionize medical diagnosis, treatment planning, and drug discovery.
+Machine learning algorithms, when trained on vast datasets of medical images and patient records, have shown promising results in detecting diseases at early stages, often outperforming human radiologists.
 Moreover, AI-powered systems can analyze complex genetic data to identify potential targets for new drugs, significantly speeding up the pharmaceutical research process.
-However, the integration of AI into healthcare is not without challenges and ethical concerns. 
-One major issue is the potential for bias in AI systems, which could lead to disparities in healthcare delivery if not properly addressed. 
-These biases can stem from unrepresentative training data or flawed algorithm design. 
-Privacy concerns also loom large, as the effectiveness of AI in healthcare often relies on access to sensitive patient data. 
+However, the integration of AI into healthcare is not without challenges and ethical concerns.
+One major issue is the potential for bias in AI systems, which could lead to disparities in healthcare delivery if not properly addressed.
+These biases can stem from unrepresentative training data or flawed algorithm design.
+Privacy concerns also loom large, as the effectiveness of AI in healthcare often relies on access to sensitive patient data.
 Striking a balance between data utilization and patient privacy remains a significant challenge.
-Furthermore, there are questions about the interpretability of AI decisions in medical contexts. 
-While an AI system might make accurate diagnoses or treatment recommendations, the 'black box' nature of some machine learning models makes it difficult for healthcare providers to understand and explain the rationale behind these decisions. 
+Furthermore, there are questions about the interpretability of AI decisions in medical contexts.
+While an AI system might make accurate diagnoses or treatment recommendations, the 'black box' nature of some machine learning models makes it difficult for healthcare providers to understand and explain the rationale behind these decisions.
 This lack of transparency can be problematic in a field where clear communication and patient trust are paramount.
-Despite these challenges, many experts believe that the potential benefits of AI in healthcare far outweigh the risks. 
-They argue that with proper regulation, ethical guidelines, and ongoing research to address current limitations, AI could help alleviate the strain on overburdened healthcare systems, reduce medical errors, and ultimately improve patient outcomes. 
+Despite these challenges, many experts believe that the potential benefits of AI in healthcare far outweigh the risks.
+They argue that with proper regulation, ethical guidelines, and ongoing research to address current limitations, AI could help alleviate the strain on overburdened healthcare systems, reduce medical errors, and ultimately improve patient outcomes.
 As we move forward, it will be crucial to foster collaboration between AI researchers, healthcare professionals, ethicists, and policymakers to ensure that the integration of AI into healthcare is done responsibly and equitably.
 """
 

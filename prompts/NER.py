@@ -1,6 +1,6 @@
 def generate_expert_ner_prompt(text):
     prompt = f"""
-    You are a world-class expert in computational linguistics and Named Entity Recognition (NER). Your task is to identify and categorize named entities in the given text with unparalleled accuracy and confidence. 
+    You are a world-class expert in computational linguistics and Named Entity Recognition (NER). Your task is to identify and categorize named entities in the given text with unparalleled accuracy and confidence.
 
     Text for analysis: "{text}"
 
@@ -65,106 +65,105 @@ def run_expert_ner(text):
 def simulate_expert_ner_response(prompt):
     # Simulating an expert-level, highly confident model response for NER
     return "Simulated expert NER response based on the advanced prompt"
-    
-''''
-USAGE
-    
+
+# USAGE
+
 test_text = """
-On July 4, 2025, Dr. Aisha Patel of the Quantum Horizons Institute unveiled the XR-1000, a revolutionary quantum computer, at the World Tech Summit in Neo Tokyo. 
-The device, priced at $50 million, promises to solve complex climate models in seconds, potentially changing the course of global warming. 
-Critics, including Professor James Smith from Oxford University, argue that the ethical implications of such powerful computation have not been fully addressed. 
+On July 4, 2025, Dr. Aisha Patel of the Quantum Horizons Institute unveiled the XR-1000, a revolutionary quantum computer, at the World Tech Summit in Neo Tokyo.
+The device, priced at $50 million, promises to solve complex climate models in seconds, potentially changing the course of global warming.
+Critics, including Professor James Smith from Oxford University, argue that the ethical implications of such powerful computation have not been fully addressed.
 Meanwhile, TechCorp CEO Lisa Chen announced a partnership with the United Nations to use the XR-1000 for humanitarian efforts, starting with Operation QuBit Relief in war-torn regions of Eastern Europe.
 """
 
 response = run_expert_ner(test_text)
 
-====== OUTPUT ====== 
+# ====== OUTPUT ======
 
-Entities Identified:
+# Entities Identified:
 
-1. Entity: July 4, 2025
-   Type: DATE
-   Confidence: 100
-   Context: Date of unveiling of the XR-1000
-   
-2. Entity: Dr. Aisha Patel
-   Type: PERSON
-   Confidence: 99
-   Context: Person who unveiled the XR-1000
-   Disambiguation: Full name and title provided, no ambiguity
+# 1. Entity: July 4, 2025
+#    Type: DATE
+#    Confidence: 100
+#    Context: Date of unveiling of the XR-1000
 
-3. Entity: Quantum Horizons Institute
-   Type: ORGANIZATION
-   Confidence: 98
-   Context: Organization affiliated with Dr. Aisha Patel
-   Disambiguation: While "Quantum Horizons" could be a product name, the full phrase "Quantum Horizons Institute" clearly indicates an organization
+# 2. Entity: Dr. Aisha Patel
+#    Type: PERSON
+#    Confidence: 99
+#    Context: Person who unveiled the XR-1000
+#    Disambiguation: Full name and title provided, no ambiguity
 
-4. Entity: XR-1000
-   Type: PRODUCT
-   Confidence: 100
-   Context: A revolutionary quantum computer unveiled
-   
-5. Entity: World Tech Summit
-   Type: EVENT
-   Confidence: 99
-   Context: Event where the XR-1000 was unveiled
+# 3. Entity: Quantum Horizons Institute
+#    Type: ORGANIZATION
+#    Confidence: 98
+#    Context: Organization affiliated with Dr. Aisha Patel
+#    Disambiguation: While "Quantum Horizons" could be a product name, the full phrase "Quantum Horizons Institute" clearly indicates an organization
 
-6. Entity: Neo Tokyo
-   Type: LOCATION
-   Confidence: 97
-   Context: Location of the World Tech Summit
-   Disambiguation: While "Neo Tokyo" might seem like a fictional place, it's treated as a real location in this context. Could be a futuristic rename of Tokyo or a new tech hub.
+# 4. Entity: XR-1000
+#    Type: PRODUCT
+#    Confidence: 100
+#    Context: A revolutionary quantum computer unveiled
 
-7. Entity: $50 million
-   Type: MONEY
-   Confidence: 100
-   Context: Price of the XR-1000
+# 5. Entity: World Tech Summit
+#    Type: EVENT
+#    Confidence: 99
+#    Context: Event where the XR-1000 was unveiled
 
-8. Entity: Professor James Smith
-   Type: PERSON
-   Confidence: 99
-   Context: Critic of the ethical implications of the XR-1000
-   
-9. Entity: Oxford University
-   Type: ORGANIZATION
-   Confidence: 100
-   Context: Institution affiliated with Professor James Smith
+# 6. Entity: Neo Tokyo
+#    Type: LOCATION
+#    Confidence: 97
+#    Context: Location of the World Tech Summit
+#    Disambiguation: While "Neo Tokyo" might seem like a fictional place, it's treated as a real location in this context. Could be a futuristic rename of Tokyo or a new tech hub.
 
-10. Entity: Lisa Chen
-    Type: PERSON
-    Confidence: 99
-    Context: CEO of TechCorp
+# 7. Entity: $50 million
+#    Type: MONEY
+#    Confidence: 100
+#    Context: Price of the XR-1000
 
-11. Entity: TechCorp
-    Type: ORGANIZATION
-    Confidence: 98
-    Context: Company led by Lisa Chen
-    Disambiguation: While "Tech" is a common term, "TechCorp" is treated as a specific company name in this context
+# 8. Entity: Professor James Smith
+#    Type: PERSON
+#    Confidence: 99
+#    Context: Critic of the ethical implications of the XR-1000
 
-12. Entity: United Nations
-    Type: ORGANIZATION
-    Confidence: 100
-    Context: Organization partnering with TechCorp
+# 9. Entity: Oxford University
+#    Type: ORGANIZATION
+#    Confidence: 100
+#    Context: Institution affiliated with Professor James Smith
 
-13. Entity: Operation QuBit Relief
-    Type: EVENT
-    Confidence: 96
-    Context: Humanitarian effort using the XR-1000
-    Disambiguation: While "QuBit" suggests a relation to quantum computing, the full phrase is treated as the name of a specific operation
+# 10. Entity: Lisa Chen
+#    Type: PERSON
+#    Confidence: 99
+#    Context: CEO of TechCorp
 
-14. Entity: Eastern Europe
-    Type: LOCATION
-    Confidence: 98
-    Context: Region where Operation QuBit Relief will be implemented
-    Disambiguation: While "Eastern Europe" is a broad term, it's treated as a specific region in this context
+# 11. Entity: TechCorp
+#    Type: ORGANIZATION
+#    Confidence: 98
+#    Context: Company led by Lisa Chen
+#    Disambiguation: While "Tech" is a common term, "TechCorp" is treated as a specific company name in this context
 
-Challenging Aspects:
-1. Distinguishing between potential product names and organization names (e.g., Quantum Horizons Institute).
-2. Handling futuristic or potentially fictional locations (Neo Tokyo).
-3. Identifying multi-word entity names that include common terms (Operation QuBit Relief).
+# 12. Entity: United Nations
+#    Type: ORGANIZATION
+#    Confidence: 100
+#    Context: Organization partnering with TechCorp
 
-Meta-Analysis:
-The text focuses on a technological breakthrough with global implications, featuring a mix of personal names, organizational entities, and technical terms. The entities span multiple domains including technology, academia, business, and geopolitics. The futuristic setting (2025) adds complexity to the NER task, requiring careful consideration of potential neologisms and new entity names.
+# 13. Entity: Operation QuBit Relief
+#    Type: EVENT
+#    Confidence: 96
+#    Context: Humanitarian effort using the XR-1000
+#    Disambiguation: While "QuBit" suggests a relation to quantum computing, the full phrase is treated as the name of a specific operation
 
-Confidence Statement:
-Overall, I have very high confidence in these NER results. The text, while complex, provides clear context for most entities. The main areas of potential uncertainty are around the exact nature of some location and event names due to the futuristic setting, but I've used contextual clues to make informed categorizations. The comprehensive analysis process, including disambiguation and edge case handling, ensures a high degree of accuracy in entity recognition and categorization.
+# 14. Entity: Eastern Europe
+#    Type: LOCATION
+#    Confidence: 98
+#    Context: Region where Operation QuBit Relief will be implemented
+#    Disambiguation: While "Eastern Europe" is a broad term, it's treated as a specific region in this context
+
+# Challenging Aspects:
+#  1. Distinguishing between potential product names and organization names (e.g., Quantum Horizons Institute).
+# 2. Handling futuristic or potentially fictional locations (Neo Tokyo).
+# 3. Identifying multi-word entity names that include common terms (Operation QuBit Relief).
+
+# Meta-Analysis:
+# The text focuses on a technological breakthrough with global implications, featuring a mix of personal names, organizational entities, and technical terms. The entities span multiple domains including technology, academia, business, and geopolitics. The futuristic setting (2025) adds complexity to the NER task, requiring careful consideration of potential neologisms and new entity names.
+
+# Confidence Statement:
+# Overall, I have very high confidence in these NER results. The text, while complex, provides clear context for most entities. The main areas of potential uncertainty are around the exact nature of some location and event names due to the futuristic setting, but I've used contextual clues to make informed categorizations. The comprehensive analysis process, including disambiguation and edge case handling, ensures a high degree of accuracy in entity recognition and categorization.

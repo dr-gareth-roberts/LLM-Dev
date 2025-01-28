@@ -1,7 +1,46 @@
-def generate_expert_qna_prompt(text):
+import os
+import importlib.util
+
+# Check for required imports
+required_imports = ["PyPDF2", "docx"]
+missing_imports = []
+
+for imp in required_imports:
+    if importlib.util.find_spec(imp) is None:
+        missing_imports.append(imp)
+
+if missing_imports:
+    raise ImportError(
+        f"The following imports are required but not installed: {', '.join(missing_imports)}. "
+        f"Please install using `pip install {', '.join(missing_imports)}`"
+    )
+
+
+def extract_text_from_file(file_path):
+    if file_path.lower().endswith('.pdf'):
+        reader = PdfReader(file_path)
+        text = ''
+        for page in reader.pages:
+            text += page.extract_text() + '\n'
+        return text
+    elif file_path.lower().endswith('.docx'):
+        doc = docx.Document(file_path)
+        return '\n'.join([para.text for para in doc.paragraphs])
+    elif file_path.lower().endswith('.txt'):
+        with open(file_path, 'r', encoding='utf-8') as file:
+            return file.read()
+    else:
+        raise ValueError("Unsupported file format: Only PDF, DOCX, and TXT are supported.")
+
+
+def generate_expert_qna_prompt(file_path_or_text):
+    if os.path.isfile(file_path_or_text):
+        text = extract_text_from_file(file_path_or_text)
+    else:
+        text = file_path_or_text
     prompt = f"""
-    You are a world-renowned expert in analytical reasoning, information extraction, and educational content creation. 
-    Your task is to generate a series of insightful questions and provide comprehensive answers based on the given text. 
+    You are a world-renowned expert in analytical reasoning, information extraction, and educational content creation.
+    Your task is to generate a series of insightful questions and provide comprehensive answers based on the given text.
     Your expertise allows you to identify key concepts, draw subtle inferences, and create questions that promote deep understanding of the material.
 
     Text for analysis: "{text}"
@@ -55,18 +94,31 @@ def generate_expert_qna_prompt(text):
     """
     return prompt
 
-def run_expert_qna(text):
-    prompt = generate_expert_qna_prompt(text)
+
+def run_expert_qna(file_path_or_text):
+    prompt = generate_expert_qna_prompt(file_path_or_text)
     # Simulating expert model response
     response = simulate_expert_qna_response(prompt)
     return response
 
+
 def simulate_expert_qna_response(prompt):
-    # Simulating an expert-level, highly confident model response for question generation and answering
-    return "Simulated expert question generation and answering response based on the advanced prompt"
-    
+    import openai
+    openai.api_key = "your  api key"
+    response = openai.Completion.create(
+        engine="gpt-4o",
+        prompt=prompt,
+        max_tokens=150,
+        temperature=0.7,
+        top_p=1.0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0
+    )
+    return response.choices[0].text.strip()
+
+
 # Example Usage:
-''''sample_text = """
+sample_text = """
 Artificial Intelligence (AI) has made significant strides in recent years, particularly in the field of natural language processing (NLP). One of the most prominent developments is the creation of large language models (LLMs) like GPT-3 and its successors. These models, trained on vast amounts of text data, can generate human-like text, translate languages, answer questions, and even write code.
 
 The potential applications of LLMs are wide-ranging, from improving customer service chatbots to assisting in content creation and data analysis. However, their capabilities also raise important ethical considerations. There are concerns about the potential for these models to generate misinformation, perpetuate biases present in their training data, or be used for malicious purposes such as creating convincing deepfakes.
@@ -78,45 +130,13 @@ Despite these challenges, many experts believe that continued advancements in AI
 
 response = run_expert_qna(sample_text)
 
-=======
+#  Example Usage with PDF file
+# response = run_expert_qna('path_to_your_pdf_file.pdf')
 
-output:
+# Example Usage with DOCX file
+# response = run_expert_qna('path_to_your_docx_file.docx')
 
-Q1: What are large language models (LLMs), and what capabilities do they possess?
+# Example Usage with TXT file
+# response = run_expert_qna('path_to_your_txt_file.txt')
 
-A1: Large language models (LLMs) are advanced artificial intelligence systems trained on vast amounts of text data. 
-These models, such as GPT-3 and its successors, have demonstrated remarkable capabilities in natural language processing tasks. 
-They can generate human-like text, perform language translation, answer questions, and even write code. 
-The versatility of LLMs allows them to be applied in various fields, showcasing their potential to revolutionize how we interact with and utilize language-based technologies.
-
-Q2: What are some potential applications of LLMs, and what ethical concerns do they raise?
-
-A2: LLMs have a wide range of potential applications, including improving customer service chatbots, assisting in content creation, and enhancing data analysis processes. 
-However, these powerful capabilities come with significant ethical considerations. 
-There are concerns about LLMs potentially generating misinformation, perpetuating biases present in their training data, or being used maliciously to create convincing deepfakes. 
-These ethical challenges highlight the need for responsible development and deployment of LLM technologies to mitigate potential harm and ensure their benefits are realized safely.
-
-Q3: How do LLMs impact the environment, and what efforts are being made to address this issue?
-
-A3: The training of large language models has a substantial environmental impact due to the significant computational resources required. 
-This process results in considerable energy consumption and carbon emissions, contributing to environmental concerns. 
-In response to these challenges, there has been an increase in research focused on developing more efficient training methods and model architectures. 
-These efforts aim to reduce the environmental footprint of LLMs while maintaining or improving their performance, highlighting the importance of balancing technological advancement with environmental responsibility.
-
-Q4: Despite the challenges, why do many experts remain optimistic about the future of AI and LLMs?
-
-A4: Many experts maintain optimism about the future of AI and LLMs because they believe these technologies will lead to transformative changes across various industries. 
-The potential for LLMs to revolutionize fields such as customer service, content creation, and data analysis suggests significant improvements in efficiency and capability. 
-However, experts also recognize the importance of addressing ethical concerns, improving energy efficiency, and ensuring equitable distribution of AI benefits. 
-This balanced perspective acknowledges both the tremendous potential and the necessary precautions in the continued development of AI technologies.
-
-Q5: What steps are necessary to ensure the responsible development and deployment of LLM technologies?
-
-A5: Ensuring the responsible development and deployment of LLM technologies requires a multi-faceted approach. 
-First, it's crucial to address ethical concerns by implementing robust safeguards against misinformation and bias, and preventing malicious use of these technologies. 
-Second, improving the energy efficiency of LLM training and operation is essential to mitigate their environmental impact. 
-Lastly, there needs to be a concerted effort to ensure that the benefits of AI are distributed equitably across society, preventing the exacerbation of existing inequalities. 
-These steps require collaboration between researchers, policymakers, and industry leaders to create comprehensive guidelines and practices for responsible AI development.
-
-Meta-Analysis: Generating questions and answers for this text required balancing between covering the main topics (LLM capabilities, applications, ethical concerns, environmental impact, and future outlook) while also encouraging critical thinking about the implications of these technologies. The challenge lay in crafting questions that not only assessed comprehension of the text but also prompted deeper consideration of the complex issues surrounding LLMs. The answers needed to synthesize information from different parts of the text, particularly when addressing the balance between potential benefits and challenges. The process highlighted the interconnected nature of technological advancement, ethical considerations, and societal impact in the field of AI.
-'''
+print(response)

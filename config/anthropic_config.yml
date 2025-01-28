@@ -1,13 +1,20 @@
-default_model: claude-2.1
+default_model: claude-3.5-sonnet-20240601
+
 models:
-  claude2:
-    name: claude-2.1
+  claude3_opus:
+    name: claude-3-opus-20240410
+    max_tokens: 200000
+    temperature: 0.7
+  claude3_sonnet:
+    name: claude-3.5-sonnet-20240601
+    max_tokens: 150000
+    temperature: 0.7
+  claude3_haiku:
+    name: claude-3.5-haiku-20240515
     max_tokens: 100000
     temperature: 0.7
-  claude_instant:
-    name: claude-instant-1.2
-    max_tokens: 100000
-    temperature: 0.7
+
 api:
   timeout: 60
   max_retries: 3
+  retry_delay: 1
