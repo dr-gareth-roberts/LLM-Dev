@@ -102,5 +102,3 @@ As we move forward, it will be crucial to foster collaboration between AI resear
 
 desired_length = 150
 response = run_expert_summarization(test_text, desired_length)
-'''
-

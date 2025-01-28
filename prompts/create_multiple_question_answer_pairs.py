@@ -1,6 +1,8 @@
 import os
 import importlib.util
 
+from PyPDF2 import PdfReader
+
 # Check for required imports
 required_imports = ["PyPDF2", "docx"]
 missing_imports = []
