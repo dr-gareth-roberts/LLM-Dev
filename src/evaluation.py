@@ -4,7 +4,7 @@ Evaluation Metrics for LLM Outputs
 from typing import List, Dict, Any
 import numpy as np
 from sklearn.metrics.pairwise import cosine_similarity
-from rouge_score import rouge_scorer
+import rouge_score
 import nltk
 from nltk.translate.bleu_score import sentence_bleu
 from bert_score import score
@@ -40,7 +40,7 @@ class EvaluationMetrics:
     
     def _calculate_rouge(self, generated_text: str, reference_text: str) -> Dict[str, float]:
         """Calculate ROUGE scores."""
-        scorer = rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
+        scorer = rouge_score.rouge_scorer.RougeScorer(['rouge1', 'rouge2', 'rougeL'], use_stemmer=True)
         scores = scorer.score(reference_text, generated_text)
         return {key: value.fmeasure for key, value in scores.items()}
     

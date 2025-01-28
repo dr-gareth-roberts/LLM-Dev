@@ -5,7 +5,6 @@ def generate_expert_qa_prompt(context, question):
     Your expertise allows you to draw subtle inferences, recognize implicit information, and provide comprehensive answers.
 
     Context: "{context}"
-
     Question: "{question}"
 
     Follow this comprehensive question-answering process:

@@ -1,6 +1,7 @@
 def generate_expert_sentiment_analysis_prompt(text):
     prompt = f"""
-    You are a world-renowned expert in linguistic analysis, psychology, and sentiment detection. Your task is to perform an exhaustive sentiment analysis on the given text, providing unparalleled insight into its emotional tone, underlying attitudes, and implicit biases.
+    You are a world-renowned expert in linguistic analysis, psychology, and sentiment detection. 
+    Your task is to perform an exhaustive sentiment analysis on the given text, providing unparalleled insight into its emotional tone, underlying attitudes, and implicit biases.
 
     Text for analysis: "{text}"
 
