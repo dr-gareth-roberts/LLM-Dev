@@ -12,7 +12,7 @@ rich==13.5.2
 loguru==0.7.0
 
 # NLP evaluation libraries
-transformers==4.33.2
+transformers==4.48.0
 sentence-transformers==2.2.2
 nltk==3.8.1
 spacy==3.6.1
