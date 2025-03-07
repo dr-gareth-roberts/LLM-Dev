@@ -58,7 +58,7 @@ ipython==8.14.0
 # UI & Visualisation
 # =========================================================
 streamlit==1.26.0
-gradio==3.40.1
+gradio==5.11.0
 plotly==5.15.0
 matplotlib==3.7.2
 dash==2.18.2
