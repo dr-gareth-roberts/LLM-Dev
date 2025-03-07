@@ -1,0 +1,23 @@
+# LLM-Dev Minimal Deployment Requirements
+# Minimal dependencies required for deployment
+
+# Core dependencies
+numpy==1.24.3
+pydantic==2.9.2
+python-dotenv==1.0.0
+PyYAML==6.0.1
+rich==13.5.2
+click==8.1.7
+
+# LLM API clients
+openai==1.3.7
+anthropic==0.5.0
+
+# Basic evaluation
+sentence-transformers==2.2.2
+scikit-learn==1.3.0
+
+# Utilities
+tqdm==4.65.0
+loguru==0.7.0
+tenacity==8.5.0

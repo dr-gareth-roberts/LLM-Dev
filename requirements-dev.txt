@@ -1,0 +1,31 @@
+# LLM-Dev Development Requirements
+# Additional dependencies required for development and testing
+
+-r requirements.txt
+
+# Development & Testing Tools
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+pytest-xdist==3.3.1
+ruff==0.1.3
+flake8==6.1.0
+pylint==2.17.5
+pre-commit==3.4.0
+tox==4.11.3
+
+# Type Checking & Documentation
+mypy-extensions==1.0.0
+types-PyYAML==6.0.12.12
+types-requests==2.31.0.1
+types-setuptools==68.2.0.0
+sphinx==7.2.6
+sphinx-rtd-theme==1.3.0
+autodoc==0.5.0
+mkdocs==1.5.3
+mkdocs-material==9.4.6
+
+# Debugging & Profiling
+line-profiler==4.1.1
+memory-profiler==0.61.0
+icecream==2.1.3
+ipdb==0.13.13

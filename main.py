@@ -8,7 +8,7 @@ import click
 import sys
 import os
 from pathlib import Path
-from typing import Optional
+from typing import Optional, List, Dict, Any
 from rich.console import Console
 from rich.progress import Progress, SpinnerColumn, TextColumn
 from rich.panel import Panel
@@ -19,6 +19,8 @@ from dotenv import load_dotenv
 # Import our modules
 from llm_environment import LLMDevEnvironment
 from llm_testing import LLMTestingSuite, ToolManager
+from src.evaluation_system import ModelEvaluator
+from src.evaluation_protocols import TestCase
 
 console = Console()
 
@@ -160,6 +162,91 @@ async def test():
         progress.update(task, completed=True)
     
     console.print("[green]Tests completed! Results saved to output directory.")
+
+@cli.command()
+@click.argument('model_id')
+@click.option('--test-file', '-t', help="Path to test cases file")
+@click.option('--metrics', '-m', multiple=True, help="Specific metrics to evaluate")
+async def evaluate(model_id: str, test_file: Optional[str], metrics: Optional[tuple]):
+    """Evaluate a model using the advanced evaluation system."""
+    cli_manager = LLMDevCLI()
+    await cli_manager.initialize()
+    
+    # Initialize the evaluator
+    evaluator = ModelEvaluator(cli_manager.env)
+    
+    # Load test cases
+    test_cases = []
+    if test_file:
+        test_path = Path(test_file)
+        if not test_path.exists():
+            console.print(f"[red]Test file not found: {test_file}")
+            sys.exit(1)
+            
+        with open(test_path, 'r') as f:
+            test_data = yaml.safe_load(f)
+            test_cases = test_data.get('test_cases', [])
+    else:
+        # Use default test cases
+        test_cases = cli_manager.testing_suite.load_default_test_cases()
+    
+    # Convert to proper TestCase format if needed
+    formatted_test_cases = []
+    for case in test_cases:
+        if isinstance(case, dict) and 'input' in case:
+            formatted_test_cases.append(case)
+        else:
+            # Try to convert from older test case format
+            try:
+                formatted_test_cases.append({
+                    'input': case['prompt'],
+                    'expected_output': case.get('expected_response', ''),
+                    'category': case.get('category', 'general'),
+                    'difficulty': case.get('difficulty', 'medium')
+                })
+            except (KeyError, TypeError):
+                console.print(f"[yellow]Warning: Skipping invalid test case: {case}")
+    
+    if not formatted_test_cases:
+        console.print("[red]No valid test cases found.")
+        sys.exit(1)
+    
+    metrics_list = list(metrics) if metrics else None
+    
+    # Run evaluation
+    with Progress(
+        SpinnerColumn(),
+        TextColumn("[progress.description]{task.description}"),
+        console=console
+    ) as progress:
+        task = progress.add_task(f"[cyan]Evaluating model {model_id}...", total=None)
+        
+        try:
+            evaluation_result = await evaluator.evaluate_model(
+                model_id=model_id,
+                test_cases=formatted_test_cases,
+                metrics=metrics_list
+            )
+            progress.update(task, completed=True)
+            
+            # Display results
+            results_table = Table(title=f"Evaluation Results for {model_id}")
+            results_table.add_column("Metric", style="cyan")
+            results_table.add_column("Score", style="green")
+            
+            for metric, score in evaluation_result.metrics.items():
+                results_table.add_row(metric, f"{score:.4f}")
+            
+            console.print(results_table)
+            
+            # Show path to detailed results
+            result_path = evaluator.save_evaluation(evaluation_result)
+            console.print(f"[green]Detailed results saved to: {result_path}")
+            
+        except Exception as e:
+            progress.update(task, completed=True)
+            console.print(f"[red]Error during evaluation: {str(e)}")
+            sys.exit(1)
 
 def create_docker_environment():
     """Create Docker environment files."""
