@@ -18,7 +18,7 @@ from src.metrics.cognitive_metrics import (
     InstructionFollowingEvaluator,
     CognitiveBiasEvaluator
 )
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import ( # Updated path
     TestCase,
     MetricResult,
     MetricCategory

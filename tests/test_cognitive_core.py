@@ -30,7 +30,7 @@ def validate_imports() -> Tuple[bool, Optional[str]]:
         )
         print("✓ Cognitive metrics imported")
         
-        from src.evaluation_protocols import (
+        from src.evaluation_framework.evaluation_protocols import ( # Updated path
             TestCase,
             MetricResult,
             MetricCategory
@@ -109,7 +109,7 @@ def validate_metrics() -> Tuple[bool, Optional[str]]:
         
         # Import required modules
         from src.metrics.cognitive_metrics import ReasoningEvaluator
-        from src.evaluation_protocols import TestCase, LLMEnvironmentProtocol
+        from src.evaluation_framework.evaluation_protocols import TestCase, LLMEnvironmentProtocol # Updated path
         
         # Create mock environment
         class MockEnv(LLMEnvironmentProtocol):
@@ -144,7 +144,7 @@ def main() -> int:
     
     try:
         # Add project root to Python path
-        project_root = Path(__file__).parent
+        project_root = Path(__file__).parent.parent # Corrected to project root
         sys.path.insert(0, str(project_root))
         
         # Run validation checks

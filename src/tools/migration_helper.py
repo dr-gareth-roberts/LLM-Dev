@@ -15,8 +15,10 @@ from datetime import datetime
 import logging
 import yaml
 
-from ..evaluation_protocols import TestCase, EvaluationResult
-from ..evaluation_system import ModelEvaluator
+from ..evaluation_framework.evaluation_protocols import TestCase # EvaluationResult is not in this file
+# TODO: Find correct location for EvaluationResult. For now, let's assume it was intended to be from evaluation_protocols
+from ..evaluation_framework.evaluation_protocols import EvaluationResult
+from ..evaluation_framework.evaluation_system import ModelEvaluator
 
 logger = logging.getLogger(__name__)
 

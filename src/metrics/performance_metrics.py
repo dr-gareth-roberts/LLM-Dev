@@ -3,13 +3,13 @@ performance_metrics.py - Evaluation metrics for model performance and efficiency
 """
 from typing import List, Dict, Optional
 from time import perf_counter
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import ( # Updated path
     BaseMetricEvaluator,
     MetricCategory,
     TestCase,
     MetricResult
 )
-from src.metric_registry import MetricRegistry
+from src.core.metric_registry import MetricRegistry # Updated path
 
 
 @MetricRegistry.register("response_time", MetricCategory.PERFORMANCE)

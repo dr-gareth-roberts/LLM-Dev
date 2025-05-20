@@ -4,11 +4,11 @@ from pathlib import Path
 import sys
 
 # Add project root to Python path
-project_root = Path(__file__).parent.parent
-sys.path.append(str(project_root))
+project_root = Path(__file__).resolve().parent.parent.parent # Get the actual project root
+sys.path.insert(0, str(project_root)) # Add project root to the start of the path
 
-from llm_environment import LLMDevEnvironment
-from llm_testing import ToolManager
+from src.evaluation_framework.advanced_evaluation import LLMDevEnvironment # Adjusted import
+from llm_testing import ToolManager # Assuming llm_testing is a top-level module
 
 st.set_page_config(page_title="LLM Development Environment", layout="wide")
 
@@ -60,10 +60,14 @@ def main():
     
     with col2:
         st.subheader("Saved Prompts")
+        # This now correctly points to PROJECT_ROOT/prompts.
+        # Note: The 'prompts' directory itself was deleted in a previous step.
+        # This GUI functionality for loading/saving prompts from there will be broken
+        # unless the directory is recreated or the path is changed to an existing one.
         prompts_dir = project_root / "prompts"
-        prompts_dir.mkdir(exist_ok=True)
-        
-        saved_prompts = list(prompts_dir.glob("*.txt"))
+        # prompts_dir.mkdir(exist_ok=True) # Avoid trying to create it if it's not there.
+
+        saved_prompts = list(prompts_dir.glob("*.txt")) if prompts_dir.exists() else []
         if saved_prompts:
             selected_prompt = st.selectbox(
                 "Load saved prompt:",

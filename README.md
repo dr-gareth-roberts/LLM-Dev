@@ -55,18 +55,21 @@ make gui
 ## Directory Structure
 
 ```
-llm-dev-env/
-├── config/           # Configuration files
-├── data/            # Data storage
-├── output/          # Output files
+llm-dev_env/
+├── config/          # Project configuration files (incl. requirements, .env.template)
+├── data/            # Data storage (e.g., user prompts, datasets)
+├── docs/            # Documentation files
+├── examples/        # Example scripts
 ├── logs/            # Log files
-├── prompts/         # Saved prompts
-├── src/             # Source code
+├── output/          # Output files from evaluations, etc.
+├── scripts/         # Helper and operational scripts (install, run tests, etc.)
+├── src/             # Source code, organized into submodules (core, metrics, ui, etc.)
 ├── tests/           # Test files
-├── .env             # Environment variables
+├── .env             # Local environment variables (copied from config/.env.template)
+├── .gitignore       # Specifies intentionally untracked files
 ├── Dockerfile       # Docker configuration
-├── docker-compose.yml
-├── Makefile
+├── docker-compose.yml # Docker Compose configuration
+├── main.py          # Main CLI entry point
 └── README.md
 ```
 

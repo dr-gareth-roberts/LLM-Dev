@@ -8,7 +8,7 @@ from typing import List, Dict, Any, Optional
 import networkx as nx
 from pydantic import BaseModel
 
-from src.agent_system import AgentRole, AgentTeam
+from .agent_system import AgentRole, AgentTeam
 
 
 class TaskDefinition(BaseModel):

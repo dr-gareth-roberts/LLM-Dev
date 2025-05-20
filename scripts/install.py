@@ -32,8 +32,9 @@ def setup_virtual_environment():
 
 def install_requirements():
     """Install required Python packages."""
+    # Assuming install.py is run from the project root
     subprocess.run([
-        sys.executable, '-m', 'pip', 'install', '-r', 'requirements.txt'
+        sys.executable, '-m', 'pip', 'install', '-r', 'config/requirements.txt' # Updated path
     ], check=True)
 
 def setup_project_structure():
@@ -66,7 +67,8 @@ LOG_LEVEL=INFO
 VECTOR_STORE_PATH=./data/vector_store
 """
     
-    with open('.env.template', 'w') as f:
+    # Assuming install.py is run from the project root
+    with open('config/.env.template', 'w') as f: # Updated path
         f.write(env_content.strip())
 
 def main():

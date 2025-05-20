@@ -8,6 +8,10 @@ from pathlib import Path
 import sys
 from typing import Dict, List, Optional, Tuple
 
+# Add project root to Python path for direct script execution
+project_root = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(project_root))
+
 def validate_environment() -> Tuple[bool, Optional[str]]:
     """Validate Python environment and core dependencies.
     
@@ -17,7 +21,7 @@ def validate_environment() -> Tuple[bool, Optional[str]]:
     try:
         import spacy
         from src.metrics.cognitive_metrics import ReasoningEvaluator
-        from src.evaluation_protocols import TestCase, MetricResult
+        from src.evaluation_framework.evaluation_protocols import TestCase, MetricResult # Updated path
         
         return True, None
     except ImportError as e:

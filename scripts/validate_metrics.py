@@ -9,7 +9,7 @@ import sys
 from pathlib import Path
 
 # Add project root to Python path
-project_root = Path(__file__).parent
+project_root = Path(__file__).parent.parent # Corrected to project root
 sys.path.insert(0, str(project_root))
 
 def validate_imports():
@@ -32,7 +32,7 @@ def validate_imports():
         print("✓")
         
         print("Importing evaluation protocols...", end=" ")
-        from src.evaluation_protocols import (
+        from src.evaluation_framework.evaluation_protocols import ( # Updated path
             TestCase,
             MetricResult,
             MetricCategory
@@ -100,7 +100,7 @@ def validate_metrics():
         
         # Import required modules
         from src.metrics.cognitive_metrics import ReasoningEvaluator
-        from src.evaluation_protocols import TestCase
+        from src.evaluation_framework.evaluation_protocols import TestCase # Updated path
         
         # Create mock environment
         class MockEnv:

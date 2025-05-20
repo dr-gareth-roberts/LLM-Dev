@@ -11,12 +11,12 @@ REM Activate virtual environment
 call .venv\Scripts\activate.bat
 
 REM Install dependencies
-python -m pip install -r requirements.txt
+python -m pip install -r config\requirements.txt
 
 REM Install spaCy model
 python -m spacy download en_core_web_sm
 
 REM Run validation script
-python check_nlp.py
+python scripts\check_nlp.py
 
 echo Setup complete!

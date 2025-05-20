@@ -17,10 +17,10 @@ import yaml
 from dotenv import load_dotenv
 
 # Import our modules
-from llm_environment import LLMDevEnvironment
-from llm_testing import LLMTestingSuite, ToolManager
-from src.evaluation_system import ModelEvaluator
-from src.evaluation_protocols import TestCase
+from src.evaluation_framework.advanced_evaluation import LLMDevEnvironment
+from llm_testing import LLMTestingSuite, ToolManager # Assuming llm_testing is a top-level module
+from src.evaluation_framework.evaluation_system import ModelEvaluator
+from src.evaluation_framework.evaluation_protocols import TestCase
 
 console = Console()
 

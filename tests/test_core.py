@@ -13,7 +13,7 @@ project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
 # Import required modules
-from src.evaluation_protocols import TestCase, MetricResult
+from src.evaluation_framework.evaluation_protocols import TestCase, MetricResult # Updated path
 from src.metrics.cognitive_metrics import ReasoningEvaluator, InstructionFollowingEvaluator, CognitiveBiasEvaluator
 
 def main():

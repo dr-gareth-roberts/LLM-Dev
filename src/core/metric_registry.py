@@ -5,7 +5,7 @@ This module implements a plugin-based registry system for managing evaluation me
 following the plan to standardise code organisation and implement consistent interfaces.
 """
 from typing import Dict, Type, List, Optional
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import (
     BaseMetricEvaluator,
     MetricCategory,
     LLMEnvironmentProtocol

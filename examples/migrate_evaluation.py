@@ -20,11 +20,11 @@ import json
 sys.path.append(str(Path(__file__).parent.parent))
 
 # Import legacy and new evaluation modules
-from llm_environment import LLMDevEnvironment
-from src.evaluation import EvaluationMetrics  # Legacy module
-from src.advanced_evaluation import ModelEvaluator as LegacyModelEvaluator  # Legacy module
-from src.evaluation_system import ModelEvaluator  # New unified system
-from src.tools.migration_helper import MigrationHelper
+from src.evaluation_framework.advanced_evaluation import LLMDevEnvironment # Updated path
+from src.evaluation_framework.evaluation import EvaluationMetrics  # Legacy module, updated path
+from src.evaluation_framework.advanced_evaluation import ModelEvaluator as LegacyModelEvaluator  # Legacy module, updated path
+from src.evaluation_framework.evaluation_system import ModelEvaluator  # New unified system, updated path
+from src.tools.migration_helper import MigrationHelper # Path is correct
 
 
 # Configure logging

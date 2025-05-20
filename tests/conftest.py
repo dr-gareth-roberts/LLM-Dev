@@ -16,7 +16,7 @@ project_root = str(Path(__file__).parent.parent)
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
 
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import (
     LLMEnvironmentProtocol,
     TestCase,
     MetricResult

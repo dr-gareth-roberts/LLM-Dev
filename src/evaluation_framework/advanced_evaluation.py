@@ -40,8 +40,8 @@ from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
 # Import the new system for delegation
-from src.evaluation_system import ModelEvaluator as NewModelEvaluator
-from src.tools.migration_helper import MigrationHelper
+from .evaluation_system import ModelEvaluator as NewModelEvaluator # Relative import
+from ..tools.migration_helper import MigrationHelper # Relative import
 
 # Show deprecation warning
 warnings.warn(

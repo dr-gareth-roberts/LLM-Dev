@@ -5,7 +5,7 @@ from dataclasses import dataclass
 from typing import List, Dict, Any, Callable
 from asyncio import sleep
 
-from src.advanced_evaluation import LLMDevEnvironment
+from src.evaluation_framework.advanced_evaluation import LLMDevEnvironment
 
 
 @dataclass

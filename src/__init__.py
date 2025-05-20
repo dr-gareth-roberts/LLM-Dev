@@ -5,7 +5,7 @@ This package provides tools and metrics for evaluating language models across mu
 dimensions including factuality, safety, cognitive capabilities, and performance.
 """
 
-from .evaluation_protocols import (
+from .evaluation_framework.evaluation_protocols import (
     LLMEnvironmentProtocol,
     BaseMetricEvaluator,
     TestCase,
