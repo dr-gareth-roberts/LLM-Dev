@@ -5,7 +5,7 @@ Write-Host "`nValidating Python Environment"
 Write-Host "=========================`n"
 
 # Set environment variables
-$env:PYTHONPATH = "c:\Users\PC\PycharmProjects\LLM-Dev"
+$env:PYTHONPATH = (Join-Path $PSScriptRoot "..") # Corrected to project root
 
 # Check Python installation
 Write-Host "Checking Python..."
@@ -32,7 +32,7 @@ foreach ($dep in $dependencies) {
 # Run validation script
 Write-Host "`nRunning validation tests..."
 try {
-    & "C:\Users\PC\anaconda3\envs\Everything\python.exe" test_cognitive_core.py
+    & "C:\Users\PC\anaconda3\envs\Everything\python.exe" (Join-Path $PSScriptRoot "..\tests\test_cognitive_core.py") # Updated path
 } catch {
     Write-Host "✗ Error running tests: $_"
     exit 1

@@ -14,7 +14,7 @@ from pathlib import Path
 # Add the project root to the Python path if not already there
 sys.path.append(str(Path(__file__).parent.parent))
 
-from src.evaluation_system import MetricRegistry, ModelEvaluator, TextSimilarityService
+from src.evaluation_framework.evaluation_system import MetricRegistry, ModelEvaluator, TextSimilarityService # Updated path
 
 
 class TestMetricRegistry:

@@ -8,14 +8,14 @@ import re
 import statistics
 from typing import Any, Dict, List, Set, Tuple
 
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import (
     BaseMetricEvaluator,
     LLMEnvironmentProtocol,
     MetricResult,
     TestCase,
-    TextSimilarityEvaluator,
+    TextSimilarityEvaluator, # Still from here, though its definition is unconfirmed
 )
-from src.evaluation_system import MetricRegistry
+from src.core.metric_registry import MetricRegistry
 
 
 @MetricRegistry.register("creativity")

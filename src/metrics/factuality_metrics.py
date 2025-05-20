@@ -4,13 +4,13 @@ factuality_metrics.py - Evaluation metrics for factual accuracy and hallucinatio
 from typing import List, Dict, Set, Tuple
 import spacy
 import networkx as nx
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import ( # Updated path
     BaseMetricEvaluator,
     MetricCategory,
     TestCase,
     MetricResult
 )
-from src.metric_registry import MetricRegistry
+from src.core.metric_registry import MetricRegistry # Updated path
 
 @MetricRegistry.register("hallucination", MetricCategory.FACTUALITY)
 class HallucinationEvaluator(BaseMetricEvaluator):

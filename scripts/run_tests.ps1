@@ -4,7 +4,7 @@
 $ErrorActionPreference = "Stop"
 
 # Set environment variables
-$env:PYTHONPATH = $PSScriptRoot
+$env:PYTHONPATH = Join-Path $PSScriptRoot ".." # Corrected to project root
 $pythonCmd = "C:\Users\PC\anaconda3\python.exe"
 
 Write-Host "Setting up test environment..." -ForegroundColor Cyan
@@ -16,7 +16,7 @@ Write-Host "Creating virtual environment..." -ForegroundColor Green
 
 # Install dependencies
 Write-Host "Installing dependencies..." -ForegroundColor Green
-& $pythonCmd -m pip install -r requirements.txt
+& $pythonCmd -m pip install -r (Join-Path $PSScriptRoot "..\config\requirements.txt") # Updated path
 
 # Install spaCy model
 Write-Host "Installing spaCy model..." -ForegroundColor Green

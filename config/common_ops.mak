@@ -1,7 +1,7 @@
 .PHONY: install setup test docker clean
 
 install:
-	python install.py
+	python scripts/install.py # Updated path
 
 setup:
 	python main.py setup
@@ -39,4 +39,4 @@ jupyter:
 	jupyter lab
 
 gui:
-	streamlit run src/gui.py
+	streamlit run src/ui/gui.py # Updated path

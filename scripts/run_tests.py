@@ -11,8 +11,8 @@ from pathlib import Path
 
 def setup_environment():
     """Set up the Python environment for testing."""
-    project_root = Path(__file__).parent
-    python_exe = r"C:\Users\PC\anaconda3\python.exe"
+    project_root = Path(__file__).parent.parent # Corrected to project root
+    python_exe = r"C:\Users\PC\anaconda3\python.exe" # Not changing this, but noted as non-portable
     
     # Add project root to Python path
     if str(project_root) not in sys.path:
@@ -21,7 +21,8 @@ def setup_environment():
     
     # Install dependencies
     print("Installing dependencies...")
-    subprocess.run([python_exe, "-m", "pip", "install", "-r", "requirements.txt"])
+    # Assuming script is run from project root: python scripts/run_tests.py
+    subprocess.run([python_exe, "-m", "pip", "install", "-r", "config/requirements.txt"]) # Updated path
     
     # Install spaCy model
     print("Installing spaCy model...")

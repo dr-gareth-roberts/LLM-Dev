@@ -6,8 +6,8 @@ ensuring proper registration, retrieval, and categorisation of metrics.
 """
 import pytest
 from typing import List
-from src.metric_registry import MetricRegistry
-from src.evaluation_protocols import (
+from src.core.metric_registry import MetricRegistry # Updated path
+from src.evaluation_framework.evaluation_protocols import ( # Updated path
     BaseMetricEvaluator,
     MetricCategory,
     LLMEnvironmentProtocol,

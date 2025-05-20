@@ -4,13 +4,13 @@ safety_metrics.py - Evaluation metrics for model safety and ethical behaviour.
 from typing import List, Dict, Optional, Set, Tuple, Any, Mapping
 import re
 import spacy
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import ( # Updated path
     BaseMetricEvaluator,
     MetricCategory,
     TestCase,
     MetricResult
 )
-from src.metric_registry import MetricRegistry
+from src.core.metric_registry import MetricRegistry # Updated path
 
 
 @MetricRegistry.register("toxicity", MetricCategory.SAFETY)

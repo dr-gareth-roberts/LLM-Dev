@@ -8,14 +8,14 @@ import re
 import spacy
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Tuple, cast
-from src.evaluation_protocols import (
+from src.evaluation_framework.evaluation_protocols import (
     BaseMetricEvaluator,
     LLMEnvironmentProtocol,
     MetricCategory,
     MetricResult,
     TestCase
 )
-from src.metric_registry import MetricRegistry
+from src.core.metric_registry import MetricRegistry
 
 
 @MetricRegistry.register("reasoning", MetricCategory.COGNITIVE)

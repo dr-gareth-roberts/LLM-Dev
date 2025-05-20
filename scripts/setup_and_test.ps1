@@ -51,16 +51,16 @@ function Test-CoreFunctionality {
     try {
         Write-Host "`nRunning core functionality tests..." -ForegroundColor Green
         
-        # Set PYTHONPATH
-        $env:PYTHONPATH = "c:\Users\PC\PycharmProjects\LLM-Dev"
+        # Set PYTHONPATH to project root
+        $env:PYTHONPATH = (Join-Path $PSScriptRoot "..")
         
         # Run our minimal test script
         Write-Host "Running environment test..."
-        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" test_env.py
+        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" (Join-Path $PSScriptRoot "..\tests\test_env.py") # Updated path
         
         # Run pattern matching test
         Write-Host "`nRunning pattern matching test..."
-        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" test_patterns.py
+        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" (Join-Path $PSScriptRoot "..\tests\test_patterns.py") # Updated path
         
         return $true
     }
@@ -80,7 +80,7 @@ try {
     # Check dependencies
     if (-not (Test-Dependencies)) {
         Write-Host "`nInstalling missing dependencies..." -ForegroundColor Yellow
-        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" -m pip install -r requirements.txt
+        & "C:\Users\PC\anaconda3\envs\Everything\python.exe" -m pip install -r (Join-Path $PSScriptRoot "..\config\requirements.txt") # Updated path
         & "C:\Users\PC\anaconda3\envs\Everything\python.exe" -m spacy download en_core_web_sm
     }
     

@@ -17,7 +17,7 @@ import numpy as np
 from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
 
-from src.evaluation_protocols import (
+from .evaluation_protocols import ( # Relative import
     BaseMetricEvaluator,
     BaseModelEvaluator,
     EvaluationMetadata,

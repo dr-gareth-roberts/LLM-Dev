@@ -40,8 +40,8 @@ from nltk.translate.bleu_score import sentence_bleu
 from bert_score import score
 
 # Import the new system for delegation
-from src.evaluation_system import ModelEvaluator
-from src.tools.migration_helper import MigrationHelper
+from .evaluation_system import ModelEvaluator # Relative import
+from ..tools.migration_helper import MigrationHelper # Relative import
 
 # Show deprecation warning
 warnings.warn(

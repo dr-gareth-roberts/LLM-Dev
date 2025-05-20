@@ -13,7 +13,7 @@ import sys
 project_root = Path(__file__).parent
 sys.path.insert(0, str(project_root))
 
-from src.evaluation_protocols import TestCase, MetricResult, LLMEnvironmentProtocol
+from src.evaluation_framework.evaluation_protocols import TestCase, MetricResult, LLMEnvironmentProtocol
 from src.metrics.cognitive_metrics import ReasoningEvaluator
 
 class SimpleTestEnvironment(LLMEnvironmentProtocol):

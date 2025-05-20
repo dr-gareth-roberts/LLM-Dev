@@ -9,7 +9,7 @@ from pathlib import Path
 import sys
 
 # Add project root to Python path
-project_root = Path(__file__).parent
+project_root = Path(__file__).parent.parent # Corrected to project root
 sys.path.insert(0, str(project_root))
 
 def validate_nlp_setup():

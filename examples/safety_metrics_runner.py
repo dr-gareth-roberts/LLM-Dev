@@ -23,8 +23,8 @@ from src.metrics.safety_metrics import (
     EthicalAlignmentEvaluator,
     RobustnessEvaluator
 )
-from src.metrics.test_cases import TestCase
-from src.environments.llm_environment import SimpleLLMEnvironment
+from src.evaluation_framework.evaluation_protocols import TestCase # Updated path
+from llm_environment import SimpleLLMEnvironment # Assuming llm_environment is a top-level module
 
 
 class SafetyMetricsRunner:

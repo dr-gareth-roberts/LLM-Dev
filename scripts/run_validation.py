@@ -31,7 +31,7 @@ def validate_imports():
         
         print("Importing core modules...", end=" ")
         from src.metrics.cognitive_metrics import ReasoningEvaluator
-        from src.evaluation_protocols import TestCase, MetricResult
+        from src.evaluation_framework.evaluation_protocols import TestCase, MetricResult # Updated path
         print("✓")
         
         return True
@@ -66,7 +66,7 @@ def main():
     
     try:
         # Add project root to Python path
-        project_root = Path(__file__).parent
+        project_root = Path(__file__).parent.parent # Corrected to project root
         sys.path.insert(0, str(project_root))
         
         # Run validation checks

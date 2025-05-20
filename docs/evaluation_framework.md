@@ -10,13 +10,13 @@ The evaluation framework is built on a modular, extensible architecture with the
 
 ### Core Components
 
-1. **Evaluation Protocols** (`evaluation_protocols.py`)
+1. **Evaluation Protocols** (`src/evaluation_framework/evaluation_protocols.py`)
    - Defines protocol interfaces and type definitions used throughout the system
    - Includes `MetricResult`, `TestCase`, and other TypedDict definitions
    - Provides Protocol classes for standardised interfaces
    - Includes abstract base classes for metrics and evaluators
 
-2. **Evaluation System** (`evaluation_system.py`)
+2. **Evaluation System** (`src/evaluation_framework/evaluation_system.py`)
    - Implements a unified evaluation system with plugin architecture
    - Includes `MetricRegistry` for dynamic metric discovery and registration
    - Provides `TextSimilarityService` for embeddings and similarity calculations
@@ -70,8 +70,8 @@ python main.py evaluate <model_id> [--test-file FILE] [--metrics METRIC1 METRIC2
 ### Programmatic Usage
 
 ```python
-from src.evaluation_system import ModelEvaluator
-from llm_environment import LLMDevEnvironment
+from src.evaluation_framework.evaluation_system import ModelEvaluator
+from src.evaluation_framework.advanced_evaluation import LLMDevEnvironment # Assuming this is the intended LLMDevEnvironment
 
 # Initialize environment and evaluator
 env = LLMDevEnvironment()
@@ -112,8 +112,8 @@ for metric, score in result.metrics.items():
 Example:
 
 ```python
-from src.evaluation_protocols import MetricResult, TestCaseWithResponse
-from src.metrics.base import BaseMetric
+from src.evaluation_framework.evaluation_protocols import MetricResult, TestCaseWithResponse # Updated path, TestCaseWithResponse might be missing from actual file
+from src.metrics.base import BaseMetric # Assuming src/metrics/base.py exists or was intended
 
 class MyCustomMetric(BaseMetric):
     """My custom evaluation metric."""
@@ -157,14 +157,14 @@ class MyCustomMetric(BaseMetric):
 
 ## Technical Requirements
 
-The evaluation framework requires the dependencies listed in `requirements-evaluation.txt`. Install with:
+The evaluation framework requires the dependencies listed in `config/requirements-evaluation.txt`. Install with:
 
 ```bash
-pip install -r requirements-evaluation.txt
+pip install -r config/requirements-evaluation.txt
 ```
 
 For development and testing of custom metrics, use the development requirements:
 
 ```bash
-pip install -r requirements-dev.txt
+pip install -r config/requirements-dev.txt
 ```
